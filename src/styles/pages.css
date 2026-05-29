@@ -4,6 +4,11 @@
   gap: 1.25rem;
 }
 
+.page--embedded {
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
 .page-intro {
   margin: 0;
   font-size: 0.875rem;
@@ -219,7 +224,7 @@
 
 .btn--primary {
   background: var(--accent);
-  color: #0c0f14;
+  color: var(--btn-primary-text);
 }
 
 .btn--primary:hover {
@@ -236,6 +241,46 @@
   background: var(--bg-elevated);
 }
 
+.lead-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lead-filters__count {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.lead-filters__clear {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--accent);
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -244,7 +289,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.65);
+  background: var(--overlay);
 }
 
 .modal {

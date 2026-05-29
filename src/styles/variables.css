@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='dark'] {
   --bg-base: #0c0f14;
   --bg-surface: #151a22;
   --bg-elevated: #1c2330;
@@ -16,6 +17,9 @@
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.12);
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --overlay: rgba(0, 0, 0, 0.65);
+  --btn-primary-text: #0c0f14;
+  --badge-on-accent: #0c0f14;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -23,4 +27,27 @@
   --header-height: 64px;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --transition: 0.2s ease;
+}
+
+[data-theme='light'] {
+  --bg-base: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --accent: #0d9488;
+  --accent-dim: rgba(13, 148, 136, 0.12);
+  --accent-hot: #ea580c;
+  --accent-hot-dim: rgba(234, 88, 12, 0.12);
+  --accent-warm: #ca8a04;
+  --accent-cool: #64748b;
+  --accent-danger: #dc2626;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --overlay: rgba(15, 23, 42, 0.4);
+  --btn-primary-text: #ffffff;
+  --badge-on-accent: #ffffff;
 }

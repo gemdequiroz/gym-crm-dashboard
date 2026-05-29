@@ -2,6 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -14,6 +15,7 @@ import type {
   PageId,
 } from '../types'
 import { buildKpis, createLeadFromForm } from '../utils/leads'
+import { applyTheme, getStoredTheme, type Theme } from '../utils/theme'
 
 interface AppContextValue {
   page: PageId
@@ -26,6 +28,8 @@ interface AppContextValue {
   closeAddLead: () => void
   settings: AppSettings
   updateSettings: (settings: AppSettings) => void
+  theme: Theme
+  toggleTheme: () => void
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
@@ -35,6 +39,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [leads, setLeads] = useState<Lead[]>(initialLeads)
   const [isAddLeadOpen, setIsAddLeadOpen] = useState(false)
   const [settings, setSettings] = useState<AppSettings>(defaultSettings)
+  const [theme, setTheme] = useState<Theme>(getStoredTheme)
+
+  useEffect(() => {
+    applyTheme(theme)
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }, [])
 
   const kpis = useMemo(
     () => buildKpis(leads, trialSessions.length),
@@ -62,6 +75,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       closeAddLead,
       settings,
       updateSettings,
+      theme,
+      toggleTheme,
     }),
     [
       page,
@@ -73,6 +88,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       closeAddLead,
       settings,
       updateSettings,
+      theme,
+      toggleTheme,
     ],
   )
 

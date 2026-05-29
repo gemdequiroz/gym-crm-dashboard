@@ -8,7 +8,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--overlay);
   z-index: 40;
   opacity: 0;
   pointer-events: none;

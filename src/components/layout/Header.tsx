@@ -2,6 +2,7 @@ import { Menu, Plus } from 'lucide-react'
 import { pageTitles } from '../../data/mockData'
 import { useApp } from '../../context/AppContext'
 import { AiInsightsDropdown } from './AiInsightsDropdown'
+import { ThemeToggle } from './ThemeToggle'
 
 interface HeaderProps {
   onMenuClick: () => void
@@ -45,6 +46,7 @@ export function Header({ onMenuClick, menuExpanded }: HeaderProps) {
             Add Lead
           </button>
         )}
+        <ThemeToggle />
         <AiInsightsDropdown />
       </div>
     </header>
