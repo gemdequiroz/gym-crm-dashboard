@@ -35,7 +35,7 @@ export function LeadsPage() {
             ? `${filteredLeads.length} matching leads`
             : `${leads.length} total leads`
         }
-        emptyMessage="No leads match your search or filter."
+        emptyMessage="No leads found"
       />
     </div>
   )

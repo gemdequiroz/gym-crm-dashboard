@@ -42,6 +42,12 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   outline: none;
+  min-width: 0;
+}
+
+.lead-search {
+  flex: 1;
+  min-width: 220px;
 }
 
 .search-input input::placeholder {

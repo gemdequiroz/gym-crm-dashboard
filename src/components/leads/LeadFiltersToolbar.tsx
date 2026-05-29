@@ -1,6 +1,7 @@
-import { Search, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { ALL_STATUS, type StatusFilter } from '../../hooks/useLeadFilters'
 import type { LeadStatus } from '../../types'
+import { LeadSearchBar } from './LeadSearchBar'
 
 interface LeadFiltersToolbarProps {
   search: string
@@ -26,16 +27,7 @@ export function LeadFiltersToolbar({
   return (
     <div className="lead-filters">
       <div className="page-toolbar">
-        <div className="search-input">
-          <Search size={18} aria-hidden />
-          <input
-            type="search"
-            placeholder="Search leads by name, email, program..."
-            value={search}
-            onChange={(e) => onSearchChange(e.target.value)}
-            aria-label="Search leads"
-          />
-        </div>
+        <LeadSearchBar value={search} onChange={onSearchChange} />
         <label className="filter-select">
           <span className="sr-only">Filter by status</span>
           <select

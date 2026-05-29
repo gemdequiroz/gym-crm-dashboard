@@ -1,7 +1,8 @@
 import { Menu, Plus } from 'lucide-react'
 import { pageTitles } from '../../data/mockData'
 import { useApp } from '../../context/AppContext'
-import { AiInsightsDropdown } from './AiInsightsDropdown'
+import { AiInsightsActive } from './AiInsightsActive'
+import { NotificationBell } from './NotificationBell'
 import { ThemeToggle } from './ThemeToggle'
 
 interface HeaderProps {
@@ -47,7 +48,10 @@ export function Header({ onMenuClick, menuExpanded }: HeaderProps) {
           </button>
         )}
         <ThemeToggle />
-        <AiInsightsDropdown />
+        <div className="header__notifications">
+          <AiInsightsActive />
+          <NotificationBell />
+        </div>
       </div>
     </header>
   )

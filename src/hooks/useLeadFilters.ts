@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import type { Lead, LeadStatus } from '../types'
+import { filterLeadsBySearch } from '../utils/filterLeads'
 
 export const ALL_STATUS = 'all' as const
 export type StatusFilter = LeadStatus | typeof ALL_STATUS
@@ -9,25 +10,16 @@ export function useLeadFilters(leads: Lead[]) {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>(ALL_STATUS)
 
   const filteredLeads = useMemo(() => {
-    const q = search.trim().toLowerCase()
-    return leads.filter((lead) => {
-      const matchesStatus =
-        statusFilter === ALL_STATUS || lead.status === statusFilter
-      const matchesSearch =
-        !q ||
-        lead.name.toLowerCase().includes(q) ||
-        lead.email.toLowerCase().includes(q) ||
-        lead.phone.includes(q) ||
-        lead.fitnessGoal.toLowerCase().includes(q) ||
-        lead.interestedProgram.toLowerCase().includes(q) ||
-        lead.leadSource.toLowerCase().includes(q) ||
-        lead.nextAction.toLowerCase().includes(q)
-      return matchesStatus && matchesSearch
-    })
+    const bySearch = filterLeadsBySearch(leads, search)
+    return bySearch.filter(
+      (lead) => statusFilter === ALL_STATUS || lead.status === statusFilter,
+    )
   }, [leads, search, statusFilter])
 
+  const isSearching = search.trim().length > 0
+
   const hasActiveFilters =
-    search.trim().length > 0 || statusFilter !== ALL_STATUS
+    isSearching || statusFilter !== ALL_STATUS
 
   const clearFilters = () => {
     setSearch('')
@@ -40,6 +32,7 @@ export function useLeadFilters(leads: Lead[]) {
     statusFilter,
     setStatusFilter,
     filteredLeads,
+    isSearching,
     hasActiveFilters,
     clearFilters,
   }

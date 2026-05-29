@@ -37,7 +37,7 @@ export function DashboardPage() {
               ? `${filteredLeads.length} matching leads`
               : `${leads.length} active prospects`
           }
-          emptyMessage="No leads match your search or filter."
+          emptyMessage="No leads found"
         />
       </div>
     </>
