@@ -5,6 +5,7 @@
 @import './styles/dashboard.css';
 @import './styles/pages.css';
 @import './styles/ai-insights.css';
+@import './styles/charts.css';
 
 *,
 *::before,

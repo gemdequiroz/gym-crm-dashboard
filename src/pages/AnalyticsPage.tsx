@@ -1,26 +1,31 @@
-import { TrendingUp } from 'lucide-react'
 import { analyticsData } from '../data/mockData'
 import { Card } from '../components/ui/Card'
+import { ConversionRateChart } from '../components/charts/ConversionRateChart'
+import { ProgramInterestChart } from '../components/charts/ProgramInterestChart'
 
 export function AnalyticsPage() {
-  const { conversionRate, conversionDelta, leadSources, programInterest } =
-    analyticsData
+  const {
+    conversionRate,
+    conversionDelta,
+    conversionTrend,
+    leadSources,
+    programInterest,
+  } = analyticsData
 
   return (
     <div className="page">
-      <div className="analytics-grid">
-        <article className="card stat-card stat-card--highlight">
-          <div className="stat-card__body">
-            <div className="stat-card__icon">
-              <TrendingUp size={24} aria-hidden />
-            </div>
-            <div>
-              <p className="stat-card__label">Conversion Rate</p>
-              <p className="stat-card__value">{conversionRate}%</p>
-              <p className="stat-card__delta">{conversionDelta}</p>
-            </div>
-          </div>
-        </article>
+      <div className="analytics-grid analytics-grid--charts">
+        <Card
+          className="analytics-chart-card analytics-chart-card--wide"
+          title="Conversion Rate"
+          subtitle="Lead-to-member conversion · last 6 months"
+        >
+          <ConversionRateChart
+            rate={conversionRate}
+            delta={conversionDelta}
+            trend={conversionTrend}
+          />
+        </Card>
 
         <Card title="Lead Sources" subtitle="Where your leads come from">
           <div className="program-bars">
@@ -48,30 +53,12 @@ export function AnalyticsPage() {
           </div>
         </Card>
 
-        <Card title="Program Interest" subtitle="Lead demand by program">
-          <div className="program-bars">
-            {programInterest.map((item) => (
-              <div key={item.program} className="program-bar">
-                <div className="program-bar__header">
-                  <span className="program-bar__label">{item.program}</span>
-                  <span className="program-bar__count">
-                    {item.count} leads · {item.percentage}%
-                  </span>
-                </div>
-                <div className="program-bar__track">
-                  <div
-                    className="program-bar__fill"
-                    style={{ width: `${item.percentage}%` }}
-                    role="progressbar"
-                    aria-valuenow={item.percentage}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    aria-label={`${item.program} interest`}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+        <Card
+          className="analytics-chart-card"
+          title="Program Interest"
+          subtitle="Lead demand by program"
+        >
+          <ProgramInterestChart data={programInterest} />
         </Card>
       </div>
     </div>

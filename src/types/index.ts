@@ -91,9 +91,15 @@ export interface LeadSourceStat {
   percentage: number
 }
 
+export interface ConversionTrendPoint {
+  month: string
+  rate: number
+}
+
 export interface AnalyticsData {
   conversionRate: number
   conversionDelta: string
+  conversionTrend: ConversionTrendPoint[]
   leadSources: LeadSourceStat[]
   programInterest: ProgramInterest[]
 }

@@ -27,6 +27,11 @@
   --header-height: 64px;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --transition: 0.2s ease;
+  --chart-1: #2dd4bf;
+  --chart-2: #6366f1;
+  --chart-3: #f97316;
+  --chart-4: #a78bfa;
+  --chart-5: #22c55e;
 }
 
 [data-theme='light'] {
@@ -50,4 +55,9 @@
   --overlay: rgba(15, 23, 42, 0.4);
   --btn-primary-text: #ffffff;
   --badge-on-accent: #ffffff;
+  --chart-1: #0d9488;
+  --chart-2: #4f46e5;
+  --chart-3: #ea580c;
+  --chart-4: #7c3aed;
+  --chart-5: #16a34a;
 }

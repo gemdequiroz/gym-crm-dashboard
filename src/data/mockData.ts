@@ -282,6 +282,14 @@ export const gymPrograms: GymProgram[] = [
 export const analyticsData: AnalyticsData = {
   conversionRate: 34,
   conversionDelta: '+4.2% vs last month',
+  conversionTrend: [
+    { month: 'Dec', rate: 26 },
+    { month: 'Jan', rate: 28 },
+    { month: 'Feb', rate: 29 },
+    { month: 'Mar', rate: 31 },
+    { month: 'Apr', rate: 32 },
+    { month: 'May', rate: 34 },
+  ],
   leadSources: [
     { source: 'Instagram', count: 42, percentage: 35 },
     { source: 'Google', count: 28, percentage: 23 },
