@@ -12,6 +12,17 @@ export type LeadStatus =
   | 'hot'
   | 'nurturing'
 
+/** Dropdown filter categories for the leads table */
+export type LeadFilterCategory =
+  | 'hot'
+  | 'trial_booked'
+  | 'contacted'
+  | 'warm'
+  | 'cold'
+
+export const ALL_STATUS_FILTER = 'all' as const
+export type StatusFilter = LeadFilterCategory | typeof ALL_STATUS_FILTER
+
 export interface Lead {
   id: string
   name: string

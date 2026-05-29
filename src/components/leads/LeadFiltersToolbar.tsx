@@ -1,7 +1,7 @@
 import { X } from 'lucide-react'
-import { ALL_STATUS, type StatusFilter } from '../../hooks/useLeadFilters'
-import type { LeadStatus } from '../../types'
+import type { StatusFilter } from '../../types'
 import { LeadSearchBar } from './LeadSearchBar'
+import { StatusFilterDropdown } from './StatusFilterDropdown'
 
 interface LeadFiltersToolbarProps {
   search: string
@@ -28,22 +28,7 @@ export function LeadFiltersToolbar({
     <div className="lead-filters">
       <div className="page-toolbar">
         <LeadSearchBar value={search} onChange={onSearchChange} />
-        <label className="filter-select">
-          <span className="sr-only">Filter by status</span>
-          <select
-            value={statusFilter}
-            onChange={(e) =>
-              onStatusChange(e.target.value as LeadStatus | typeof ALL_STATUS)
-            }
-          >
-            <option value={ALL_STATUS}>All statuses</option>
-            <option value="new">New</option>
-            <option value="contacted">Contacted</option>
-            <option value="trial_booked">Trial Booked</option>
-            <option value="hot">Hot</option>
-            <option value="nurturing">Nurturing</option>
-          </select>
-        </label>
+        <StatusFilterDropdown value={statusFilter} onChange={onStatusChange} />
         {hasActiveFilters && (
           <button
             type="button"
