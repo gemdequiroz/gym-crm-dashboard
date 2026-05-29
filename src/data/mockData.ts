@@ -1,0 +1,362 @@
+import type {
+  AiRecommendation,
+  AnalyticsData,
+  AppSettings,
+  GymProgram,
+  Lead,
+  LeadStatus,
+  TrialSession,
+} from '../types'
+
+export const initialLeads: Lead[] = [
+  {
+    id: '1',
+    name: 'Sarah Mitchell',
+    email: 'sarah.m@email.com',
+    phone: '(555) 234-8901',
+    fitnessGoal: 'Weight Loss',
+    interestedProgram: 'HIIT',
+    leadSource: 'Instagram',
+    aiScore: 92,
+    status: 'hot',
+    nextAction: 'Call within 2 hours',
+  },
+  {
+    id: '2',
+    name: 'James Chen',
+    email: 'jchen@email.com',
+    phone: '(555) 891-2234',
+    fitnessGoal: 'Muscle Gain',
+    interestedProgram: 'Personal Training',
+    leadSource: 'Referral',
+    aiScore: 88,
+    status: 'trial_booked',
+    nextAction: 'Confirm trial attendance',
+  },
+  {
+    id: '3',
+    name: 'Emily Rodriguez',
+    email: 'emily.r@email.com',
+    phone: '(555) 445-6678',
+    fitnessGoal: 'Flexibility',
+    interestedProgram: 'Yoga',
+    leadSource: 'Google',
+    aiScore: 74,
+    status: 'contacted',
+    nextAction: 'Send class schedule',
+  },
+  {
+    id: '4',
+    name: 'Marcus Johnson',
+    email: 'marcus.j@email.com',
+    phone: '(555) 112-3344',
+    fitnessGoal: 'Endurance',
+    interestedProgram: 'CrossFit',
+    leadSource: 'Walk-in',
+    aiScore: 81,
+    status: 'hot',
+    nextAction: 'Offer founding member rate',
+  },
+  {
+    id: '5',
+    name: 'Lisa Park',
+    email: 'lisa.park@email.com',
+    phone: '(555) 778-9900',
+    fitnessGoal: 'Weight Loss',
+    interestedProgram: 'Nutrition',
+    leadSource: 'Facebook',
+    aiScore: 65,
+    status: 'nurturing',
+    nextAction: 'Email success stories',
+  },
+  {
+    id: '6',
+    name: 'David Thompson',
+    email: 'dthompson@email.com',
+    phone: '(555) 334-5566',
+    fitnessGoal: 'Muscle Gain',
+    interestedProgram: 'Personal Training',
+    leadSource: 'Instagram',
+    aiScore: 58,
+    status: 'new',
+    nextAction: 'Send welcome video',
+  },
+  {
+    id: '7',
+    name: 'Anna Kowalski',
+    email: 'anna.k@email.com',
+    phone: '(555) 667-1122',
+    fitnessGoal: 'Endurance',
+    interestedProgram: 'HIIT',
+    leadSource: 'Google',
+    aiScore: 71,
+    status: 'trial_booked',
+    nextAction: 'Prep trial workout plan',
+  },
+  {
+    id: '8',
+    name: 'Ryan Foster',
+    email: 'ryan.f@email.com',
+    phone: '(555) 223-4455',
+    fitnessGoal: 'Weight Loss',
+    interestedProgram: 'CrossFit',
+    leadSource: 'Referral',
+    aiScore: 45,
+    status: 'new',
+    nextAction: 'Schedule intro call',
+  },
+  {
+    id: '9',
+    name: 'Nina Patel',
+    email: 'nina.patel@email.com',
+    phone: '(555) 990-1122',
+    fitnessGoal: 'Flexibility',
+    interestedProgram: 'Yoga',
+    leadSource: 'Instagram',
+    aiScore: 83,
+    status: 'hot',
+    nextAction: 'Book studio tour',
+  },
+  {
+    id: '10',
+    name: 'Chris Martinez',
+    email: 'chris.m@email.com',
+    phone: '(555) 556-7788',
+    fitnessGoal: 'Muscle Gain',
+    interestedProgram: 'HIIT',
+    leadSource: 'Walk-in',
+    aiScore: 52,
+    status: 'contacted',
+    nextAction: 'Follow up on pricing',
+  },
+]
+
+export const trialSessions: TrialSession[] = [
+  {
+    id: 't1',
+    leadName: 'James Chen',
+    program: 'Personal Training',
+    trainer: 'Alex Rivera',
+    date: '2026-05-31',
+    time: '9:00 AM',
+    dayLabel: 'Today',
+  },
+  {
+    id: 't2',
+    leadName: 'Anna Kowalski',
+    program: 'HIIT',
+    trainer: 'Jordan Lee',
+    date: '2026-05-31',
+    time: '11:30 AM',
+    dayLabel: 'Today',
+  },
+  {
+    id: 't3',
+    leadName: 'Emily Rodriguez',
+    program: 'Yoga',
+    trainer: 'Maya Singh',
+    date: '2026-06-01',
+    time: '6:00 PM',
+    dayLabel: 'Sun',
+  },
+  {
+    id: 't4',
+    leadName: 'Marcus Johnson',
+    program: 'CrossFit',
+    trainer: 'Tyler Brooks',
+    date: '2026-06-02',
+    time: '7:00 AM',
+    dayLabel: 'Mon',
+  },
+  {
+    id: 't5',
+    leadName: 'Sarah Mitchell',
+    program: 'HIIT',
+    trainer: 'Jordan Lee',
+    date: '2026-06-02',
+    time: '5:30 PM',
+    dayLabel: 'Mon',
+  },
+  {
+    id: 't6',
+    leadName: 'Nina Patel',
+    program: 'Yoga',
+    trainer: 'Maya Singh',
+    date: '2026-06-03',
+    time: '10:00 AM',
+    dayLabel: 'Tue',
+  },
+]
+
+export const aiRecommendations: AiRecommendation[] = [
+  {
+    id: 'r1',
+    priority: 'high',
+    title: 'Prioritize Sarah Mitchell',
+    body: '92 AI score with weight-loss goal aligns with your top-converting HIIT funnel. High intent from Instagram ads.',
+    leadName: 'Sarah Mitchell',
+  },
+  {
+    id: 'r2',
+    priority: 'high',
+    title: 'Convert trial no-shows risk',
+    body: 'James Chen has a trial today. Send a reminder SMS 2 hours before to reduce no-show rate by ~34%.',
+    leadName: 'James Chen',
+  },
+  {
+    id: 'r3',
+    priority: 'medium',
+    title: 'Bundle offer for Marcus Johnson',
+    body: 'CrossFit + nutrition bundle historically converts walk-ins at 2.1x. Offer 10% first-month discount.',
+    leadName: 'Marcus Johnson',
+  },
+  {
+    id: 'r4',
+    priority: 'medium',
+    title: 'Re-engage cold leads',
+    body: "3 leads with scores below 60 haven't been contacted in 5+ days. Trigger automated nurture sequence.",
+    leadName: 'Ryan Foster',
+  },
+  {
+    id: 'r5',
+    priority: 'low',
+    title: 'Peak trial slot optimization',
+    body: 'Saturday 10 AM trials have 78% show-up rate vs 62% weekday average. Open 2 more weekend slots.',
+    leadName: 'Anna Kowalski',
+  },
+]
+
+export const gymPrograms: GymProgram[] = [
+  {
+    id: 'p1',
+    name: 'HIIT',
+    description:
+      'High-intensity interval training for fat burn and cardiovascular fitness.',
+    duration: '45 min',
+    level: 'All levels',
+    activeMembers: 84,
+    price: '$89/mo',
+  },
+  {
+    id: 'p2',
+    name: 'Yoga',
+    description:
+      'Improve flexibility, balance, and mindfulness with guided flow sessions.',
+    duration: '60 min',
+    level: 'Beginner–Advanced',
+    activeMembers: 56,
+    price: '$79/mo',
+  },
+  {
+    id: 'p3',
+    name: 'CrossFit',
+    description:
+      'Functional movements at high intensity—strength, endurance, and community.',
+    duration: '60 min',
+    level: 'Intermediate+',
+    activeMembers: 62,
+    price: '$129/mo',
+  },
+  {
+    id: 'p4',
+    name: 'Personal Training',
+    description:
+      'One-on-one coaching tailored to your goals with certified trainers.',
+    duration: '60 min',
+    level: 'All levels',
+    activeMembers: 38,
+    price: '$199/mo',
+  },
+  {
+    id: 'p5',
+    name: 'Strength Training',
+    description:
+      'Structured lifting programs focused on muscle gain and progressive overload.',
+    duration: '50 min',
+    level: 'All levels',
+    activeMembers: 71,
+    price: '$99/mo',
+  },
+]
+
+export const analyticsData: AnalyticsData = {
+  conversionRate: 34,
+  conversionDelta: '+4.2% vs last month',
+  leadSources: [
+    { source: 'Instagram', count: 42, percentage: 35 },
+    { source: 'Google', count: 28, percentage: 23 },
+    { source: 'Referral', count: 24, percentage: 20 },
+    { source: 'Walk-in', count: 15, percentage: 12 },
+    { source: 'Facebook', count: 12, percentage: 10 },
+  ],
+  programInterest: [
+    { program: 'HIIT', count: 28, percentage: 32 },
+    { program: 'Personal Training', count: 22, percentage: 25 },
+    { program: 'CrossFit', count: 18, percentage: 20 },
+    { program: 'Yoga', count: 12, percentage: 14 },
+    { program: 'Strength Training', count: 9, percentage: 9 },
+  ],
+}
+
+export const defaultSettings: AppSettings = {
+  profile: {
+    businessName: 'FitPulse Gym & Wellness',
+    email: 'hello@fitpulsegym.com',
+    phone: '(555) 100-2000',
+    address: '1200 Fitness Blvd, Suite 100, Austin, TX 78701',
+    timezone: 'America/Chicago',
+  },
+  notifications: {
+    newLeadAlerts: true,
+    trialReminders: true,
+    hotLeadAlerts: true,
+    weeklyDigest: false,
+  },
+  aiScoring: {
+    hotThreshold: 80,
+    warmThreshold: 60,
+    autoPrioritize: true,
+    includeEngagement: true,
+  },
+}
+
+export const fitnessGoals = [
+  'Weight Loss',
+  'Muscle Gain',
+  'Endurance',
+  'Flexibility',
+  'General Fitness',
+]
+
+export const programOptions = [
+  'HIIT',
+  'Yoga',
+  'CrossFit',
+  'Personal Training',
+  'Strength Training',
+  'Nutrition',
+]
+
+export const leadSourceOptions = [
+  'Instagram',
+  'Google',
+  'Referral',
+  'Walk-in',
+  'Facebook',
+]
+
+export const statusOptions: { value: LeadStatus; label: string }[] = [
+  { value: 'new', label: 'New' },
+  { value: 'contacted', label: 'Contacted' },
+  { value: 'trial_booked', label: 'Trial Booked' },
+  { value: 'hot', label: 'Hot' },
+  { value: 'nurturing', label: 'Nurturing' },
+]
+
+export const pageTitles: Record<string, string> = {
+  dashboard: 'Dashboard',
+  leads: 'Leads',
+  programs: 'Programs',
+  analytics: 'Analytics',
+  settings: 'Settings',
+}

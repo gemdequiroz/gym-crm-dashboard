@@ -1,0 +1,42 @@
+@import './styles/variables.css';
+@import './styles/layout.css';
+@import './styles/sidebar.css';
+@import './styles/components.css';
+@import './styles/dashboard.css';
+@import './styles/pages.css';
+@import './styles/ai-insights.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
